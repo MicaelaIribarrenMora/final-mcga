@@ -29,7 +29,7 @@ export class TodoDetailsPage implements OnInit {
 
   async loadTodo() {
     const loading = await this.loadingController.create({
-      message: 'Loading Todo..'
+      message: 'cargando...'
     });
     await loading.present();
  
@@ -42,7 +42,7 @@ export class TodoDetailsPage implements OnInit {
   async saveTodo() {
  
     const loading = await this.loadingController.create({
-      message: 'Saving Todo..'
+      message: 'Guardando...'
     });
     await loading.present();
  
