@@ -3,12 +3,13 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } fro
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authSvc: AuthService, private router: Router){}
+  constructor(private authSvc: AuthService, private router: Router, private toastr: ToastrService){}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -16,6 +17,7 @@ export class AuthGuard implements CanActivate {
     if(this.authSvc.isLogged){
       return true;
     }
+    this.toastr.error('Debe iniciar sesion para ingresar', '¡Atención!');
     console.log('No puede acceder');
     this.router.navigateByUrl('/login');
       return false;
