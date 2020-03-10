@@ -15,11 +15,18 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule, AngularFireAuthModule,],
+    AngularFirestoreModule, AngularFireAuthModule, BrowserAnimationsModule, ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),],
   providers: [
     StatusBar,
     SplashScreen,
